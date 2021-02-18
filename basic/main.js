@@ -63,6 +63,40 @@ function InsertationSort(array)
     return array;
 }
 
+findMax = (arr, k) => {
+    let max = -Infinity;
+    let maxIdx = 0;
+    for (let i = 0; i < k; i++) {
+        if (arr[i] >= max) {
+            max = arr[i];
+            maxIdx = i;
+        }
+    }
+    return maxIdx;
+}
+
+function flip(arr,k){
+    let i = 0;
+    while (i < k) {
+        swap(arr[i],arr[k]);
+        i++;
+        k--;
+    }
+    return arr;
+}
+
+function pancake(arr){
+    let i = arr.length;
+    while (i > 1) {
+        let maxIndex = findMax(arr, i);
+        if (maxIndex !== i - 1) {
+            flip(arr, maxIndex);
+            flip(arr, i - 1);
+        }
+        i--;
+    }
+    return arr;
+}
 
 var arr = [];
 var len = 10;
@@ -79,5 +113,4 @@ for (let i = 0; i < len; i++)
 }
 
 console.log(arr);
-console.log(BubbleSort(arr));
-console.log(SelectionSort(arr));
+console.log(pancake(arr));
