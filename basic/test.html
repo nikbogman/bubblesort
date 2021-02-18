@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>P5.js Example</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+        <script>
+            function setup(){
+                var canvas = createCanvas(400, 400);
+                canvas.parent('canvasForHTML');
+            }
+            
+            function draw(){
+                background(127);
+            }
+        </script>
+    </head>
+    <body>
+    <h1>Canvas for visualization</h1>
+    <div id="canvasForHTML"></div>
+    <p>Move your mouse around to see circles.</h1>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Visualization</title>
+  <meta charset="utf-8" />
+  <!----bootsrap----->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!----p5----->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
+  <!----own----->
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function func(bool)
+    {
+      status = bool;
+    }
+  </script>
+</head>
+
+<body>
+  <br>
+  <h3>Sortig algorithms</h3>
+  <br>
+  <div class="container-fluid" id="canvasForHTML"></div>
+  <div class="container bg-dark">
+    <button class="btn btn-light btn-sm" onclick="array_init()">setup</button>
+    <button class="btn btn-light btn-sm" onclick="BubbleSort(values)">bubble</button>
+    <button class="btn btn-light btn-sm" onclick="SelectionSort(values)">selection</button>
+    <button class="btn btn-light btn-sm" onclick="InsertationSort(values)">insertation</button>
+    <button class="btn btn-light btn-sm" onclick="ShellSort(values)">shell</button>
+  </div>
+</body>
+
+
+</html>
