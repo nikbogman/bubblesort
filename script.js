@@ -1,12 +1,11 @@
 let values = [];
 let states = [];
 
-let w = 10;
+let w = 5;
 var active = false; //is sorting in action
-var status = false; //is it going
 
 function setup() {
-    var canvas = createCanvas(1280, 720);//(windowWidth/2,windowHeight/2);//(1280, 720);
+    var canvas = createCanvas(windowWidth, 720);//(windowWidth/2,windowHeight/2);//(1280, 720);
     canvas.parent('canvasForHTML');
     array_init();
 }
@@ -25,7 +24,7 @@ function array_init() {
 
 
 
-async function BubbleSort(array) {
+async function bubbleSort(array) {
     if (!active) {
         active = true;
 
@@ -33,7 +32,7 @@ async function BubbleSort(array) {
             for (let j = 0; j < array.length - 1 - i; j++) {
                 states[j] = 1;
                 if (array[j] > array[j + 1])
-                    await swap(array, j, j + 1);
+                    await swap(array, j, j + 1, 5);
                 states[j] = 0;
             }
         }
@@ -46,7 +45,7 @@ async function BubbleSort(array) {
     }
 }
 
-async function SelectionSort(array) {
+async function selectionSort(array) {
     if (!active) {
         active = true;
         let min_index;
@@ -58,7 +57,7 @@ async function SelectionSort(array) {
                     min_index = j;
                 states[j] = 0;
             }
-            await swap(array, i, min_index);
+            await swap(array, i, min_index, 15);
             states[i] = 2;
         }
         states = 0;
@@ -71,7 +70,7 @@ async function SelectionSort(array) {
 }
 
 
-async function InsertationSort(array) {
+async function insertationSort(array) {
     let n = array.length;
 
     for (let i = 1; i < n; i++) {
@@ -83,7 +82,7 @@ async function InsertationSort(array) {
                 array[j + 1] = array[j];
                 j--;
             }
-            await sleep(10);
+            await sleep(5);
             array[j + 1] = current;
         }
         await foo(current);
@@ -92,26 +91,79 @@ async function InsertationSort(array) {
     return array;
 }
 
-async function ShellSort(arr) {
+async function shellSort(arr) {
     let n = arr.length;
     for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
         for (let i = gap; i < n; i += 1) {
             let temp = arr[i];
-            let foo2 = async (temp, gap) => {
+            let foo = async (temp, gap) => {
                 let j;
                 for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
                     arr[j] = arr[j - gap];
                 }
-                await sleep(10);
+                await sleep(0);
                 arr[j] = temp;
             }
-            await foo2(temp,gap);
+            await foo(temp, gap);
         }
     }
     return arr;
 }
 
+async function gnomeSort(arr) {
+    let n = arr.length;
+    let i = 0;
+    while (i < n) {
+        if (i == 0)
+            i++;
+        if (arr[i] >= arr[i - 1])
+            i++;
+        else {
+            await swap(arr, i, i - 1);
+            i--;
+        }
+    }
 
+    return arr;
+}
+
+async function cocktailSort(arr)
+{
+    let n = arr.length;
+    let swapped = true;
+    let start = 0;
+    let end = n - 1;
+ 
+    while (swapped) 
+    {
+        swapped = false;
+
+        for (let i = start; i < end; ++i) 
+        {
+            if (arr[i] > arr[i + 1]) {
+                await swap(arr,i,i+1);
+                swapped = true;
+            }
+        }
+
+        if (!swapped)
+            break;
+ 
+        swapped = false;
+ 
+        end-=1;
+ 
+        for (let i = end - 1; i >= start; --i) 
+        {
+            if (arr[i] > arr[i + 1]) {
+                await swap(arr,i,i+1);
+                swapped = true;
+            }
+        }
+        start+=1;
+    }
+    return arr;
+}
 function rectangulars() {
     for (let i = 0; i < values.length; i++) {
         noStroke();
@@ -147,8 +199,8 @@ function draw() {
     //rectangulars();
 }
 
-async function swap(arr, a, b) {
-    await sleep(20);
+async function swap(arr, a, b, ms) {
+    await sleep(ms);
     let temp = arr[a];
     arr[a] = arr[b];
     arr[b] = temp;

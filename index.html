@@ -14,7 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
-  <!----own----->
+  <!----own---class="container-fluid"-->
   <script src="script.js"></script>
   <link rel="stylesheet" href="style.css">
   <script>
@@ -29,13 +29,15 @@
   <br>
   <h3>Sortig algorithms</h3>
   <br>
-  <div class="container-fluid" id="canvasForHTML"></div>
+  <div  id="canvasForHTML"></div>
   <div class="container bg-dark">
     <button class="btn btn-light btn-sm" onclick="array_init()">setup</button>
-    <button class="btn btn-light btn-sm" onclick="BubbleSort(values)">bubble</button>
-    <button class="btn btn-light btn-sm" onclick="SelectionSort(values)">selection</button>
-    <button class="btn btn-light btn-sm" onclick="InsertationSort(values)">insertation</button>
-    <button class="btn btn-light btn-sm" onclick="ShellSort(values)">shell</button>
+    <button class="btn btn-light btn-sm" onclick="bubbleSort(values)">bubble</button>
+    <button class="btn btn-light btn-sm" onclick="selectionSort(values)">selection</button>
+    <button class="btn btn-light btn-sm" onclick="insertationSort(values)">insertation</button>
+    <button class="btn btn-light btn-sm" onclick="shellSort(values)">shell</button>
+    <button class="btn btn-light btn-sm" onclick="gnomeSort(values)">gnome</button>
+    <button class="btn btn-light btn-sm" onclick="cocktailSort(values)">cocktail</button>
   </div>
 </body>
 
