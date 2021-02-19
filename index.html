@@ -17,21 +17,17 @@
   <!----own---class="container-fluid"-->
   <script src="script.js"></script>
   <link rel="stylesheet" href="style.css">
-  <script>
-    function func(bool)
-    {
-      status = bool;
-    }
-  </script>
 </head>
 
 <body>
   <br>
   <h3>Sortig algorithms</h3>
   <br>
-  <div  id="canvasForHTML"></div>
+  <div id="canvasForHTML"></div>
   <div class="container bg-dark">
-    <button class="btn btn-light btn-sm" onclick="arrayInit()">setup</button>
+    <button class="btn btn-light btn-sm" onclick="pfunc()">stop/start</button>
+    <button class="btn btn-light btn-sm" onclick="arrayInit()">reset</button>
+    <p></p>
     <button class="btn btn-light btn-sm" onclick="bubbleSort(values)">bubble</button>
     <button class="btn btn-light btn-sm" onclick="selectionSort(values)">selection</button>
     <button class="btn btn-light btn-sm" onclick="insertationSort(values)">insertation</button>

@@ -1,13 +1,15 @@
 let values = [];
 let states = [];
 
-let w = 10;
-var active = false; //is sorting in action
+let w = 1;
+var active = false; 
+var pauseFlag = false;
 
 function setup() {
     var canvas = createCanvas(windowWidth, 720);//(windowWidth/2,windowHeight/2);//(1280, 720);
     canvas.parent('canvasForHTML');
     arrayInit();
+
 }
 
 function arrayInit() {
@@ -21,13 +23,26 @@ function arrayInit() {
     }
 }
 
+pfunc = () => {
+    if (pauseFlag)
+        pauseFlag = false;
+    else
+        pauseFlag = true;
+}
+
+pause = async () => {
+    while (pauseFlag) {
+        await sleep(0);
+    }
+}
+//sorting algorithms
 async function bubbleSort(arr) {
     if (!active) {
         active = true;
-        let sorted = arr.lenght;
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr.length - 1 - i; j++) {
                 states[j] = 1;
+                await pause();
                 if (arr[j] > arr[j + 1])
                     await swap(arr, j, j + 1, 5);
                 states[j] = 0;
@@ -49,6 +64,7 @@ async function selectionSort(arr) {
             minIdx = i;
             states[i] = 1;
             for (let j = i + 1; j < arr.length; j++) {
+                await pause();
                 if (arr[j] < arr[minIdx])
                     minIdx = j;
                 states[j] = 0;
@@ -71,6 +87,7 @@ async function insertationSort(arr) {
             let current = arr[i];
             states[i] = 1;
             let j = i - 1;
+            await pause();
             while ((j > -1) && (current < arr[j])) {
                 arr[j + 1] = arr[j];
                 j--;
@@ -94,6 +111,7 @@ async function shellSort(arr) {
         for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
             for (let i = gap; i < n; i += 1) {
                 let temp = arr[i];
+
                 let foo = async (temp, gap) => {
                     let j;
                     for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
@@ -102,6 +120,7 @@ async function shellSort(arr) {
                     await sleep(0);
                     arr[j] = temp;
                 }
+                await pause();
                 await foo(temp, gap);
             }
         }
@@ -123,6 +142,7 @@ async function gnomeSort(arr) {
             if (arr[i] >= arr[i - 1])
                 i++;
             else {
+                await pause();
                 await swap(arr, i, i - 1);
                 i--;
             }
@@ -193,6 +213,7 @@ async function pancakeSort(arr) {
             }
             return arr;
         }
+
         while (n > 1) {
             let maxIndex = findMax(arr, n);
             if (maxIndex !== n - 1) {
@@ -209,7 +230,8 @@ async function pancakeSort(arr) {
     }
 }
 
-function rectangulars() {
+
+rectangulars = () => {
     for (let i = 0; i < values.length; i++) {
         noStroke();
         if (states[i] == 1) {
@@ -223,7 +245,7 @@ function rectangulars() {
     }
 }
 
-function points() {
+points = () => {
     for (let i = 0; i < values.length; i++) {
         strokeWeight(w);
         if (states[i] == 1) {
@@ -237,11 +259,10 @@ function points() {
     }
 }
 
-
 function draw() {
     background(0);
-    points();
-    //rectangulars();
+    //points();
+    rectangulars();
 }
 
 async function swap(arr, a, b, ms) {
