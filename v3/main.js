@@ -28,6 +28,7 @@ function buttonSet() {
     createButton("cocktail").class('button button1').mousePressed(()=>{cocktail(a.values)});
     createButton("pancake").class('button button1').mousePressed(()=>{pancake(a.values)});
 }
+
 function setup() {
     var canvas = createCanvas(windowWidth, 720);
     canvas.parent('canvasHTML');
