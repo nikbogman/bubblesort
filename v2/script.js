@@ -1,21 +1,21 @@
 let values = [];
 let states = [];
 
-let w = 1;
-var active = false; 
+const shapeWidth = 30;
+const ms = 1;
+var active = false;
 var pauseFlag = false;
 
 function setup() {
     var canvas = createCanvas(windowWidth, 720);//(windowWidth/2,windowHeight/2);//(1280, 720);
     canvas.parent('canvasForHTML');
     arrayInit();
-
 }
 
 function arrayInit() {
     if (!active) {
-        values = new Array(floor(width / w));
-        states = new Array(floor(width / w));
+        values = new Array(floor(width / shapeWidth));
+        states = new Array(floor(width / shapeWidth));
         for (let i = 0; i < values.length; i++) {
             values[i] = random(height);
             states[i] = 0;
@@ -23,18 +23,19 @@ function arrayInit() {
     }
 }
 
-pfunc = () => {
+pause = () => {
     if (pauseFlag)
         pauseFlag = false;
     else
         pauseFlag = true;
 }
 
-pause = async () => {
+stop = async () => {
     while (pauseFlag) {
         await sleep(0);
     }
 }
+
 //sorting algorithms
 async function bubbleSort(arr) {
     if (!active) {
@@ -42,9 +43,9 @@ async function bubbleSort(arr) {
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr.length - 1 - i; j++) {
                 states[j] = 1;
-                await pause();
+                await stop();
                 if (arr[j] > arr[j + 1])
-                    await swap(arr, j, j + 1, 5);
+                    await swap(arr, j, j + 1);
                 states[j] = 0;
             }
         }
@@ -64,12 +65,12 @@ async function selectionSort(arr) {
             minIdx = i;
             states[i] = 1;
             for (let j = i + 1; j < arr.length; j++) {
-                await pause();
+                await stop();
                 if (arr[j] < arr[minIdx])
                     minIdx = j;
                 states[j] = 0;
             }
-            await swap(arr, i, minIdx, 15);
+            await swap(arr, i, minIdx);
             states[i] = 2;
         }
         states = 0;
@@ -87,12 +88,12 @@ async function insertationSort(arr) {
             let current = arr[i];
             states[i] = 1;
             let j = i - 1;
-            await pause();
+            await stop();
             while ((j > -1) && (current < arr[j])) {
                 arr[j + 1] = arr[j];
                 j--;
             }
-            await sleep(5);
+            await sleep(0);
             arr[j + 1] = current;
             states[i] = 2;
         }
@@ -111,17 +112,13 @@ async function shellSort(arr) {
         for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
             for (let i = gap; i < n; i += 1) {
                 let temp = arr[i];
-
-                let foo = async (temp, gap) => {
-                    let j;
-                    for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
-                        arr[j] = arr[j - gap];
-                    }
-                    await sleep(0);
-                    arr[j] = temp;
+                await stop();
+                let j;
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                    arr[j] = arr[j - gap];
                 }
-                await pause();
-                await foo(temp, gap);
+                await sleep(0);
+                arr[j] = temp;
             }
         }
         active = false;
@@ -142,7 +139,7 @@ async function gnomeSort(arr) {
             if (arr[i] >= arr[i - 1])
                 i++;
             else {
-                await pause();
+                await stop();
                 await swap(arr, i, i - 1);
                 i--;
             }
@@ -207,7 +204,7 @@ async function pancakeSort(arr) {
         let flip = async (arr, k) => {
             let i = 0;
             while (i < k) {
-                await swap(arr, k, i, 1);
+                await swap(arr, k, i);
                 i++;
                 k--;
             }
@@ -230,7 +227,6 @@ async function pancakeSort(arr) {
     }
 }
 
-
 rectangulars = () => {
     for (let i = 0; i < values.length; i++) {
         noStroke();
@@ -241,13 +237,13 @@ rectangulars = () => {
         } else {
             fill(255);
         }
-        rect(i * w, height - values[i], w, values[i]);
+        rect(i * shapeWidth, height - values[i], shapeWidth, values[i]);
     }
 }
 
 points = () => {
     for (let i = 0; i < values.length; i++) {
-        strokeWeight(w);
+        strokeWeight(shapeWidth);
         if (states[i] == 1) {
             stroke('#FF4500');
         } else if (states[i] == 2) {
@@ -255,7 +251,7 @@ points = () => {
         } else {
             stroke(255);
         }
-        point(w * i, height - values[i]);
+        point(shapeWidth * i, height - values[i]);
     }
 }
 

@@ -113,4 +113,4 @@ for (let i = 0; i < len; i++)
 }
 
 console.log(arr);
-console.log(pancake(arr));
+console.log(BubbleSort(arr));
