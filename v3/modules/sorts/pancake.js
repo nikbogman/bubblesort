@@ -1,5 +1,5 @@
 import * as util from '../utils.js';
-import {a} from '../../main.js';
+import { o } from '../../main.js';
 
 let findMax = (arr, k) => {
     let max = -Infinity;
@@ -24,21 +24,19 @@ let flip = async (arr, k) => {
 }
 
 export default async function (array) {
-    if (!a.active) {
-        a.active = true;
-        let n = array.length;
-        while (n > 1) {
-            let maxIndex = findMax(array, n);
-            if (maxIndex !== n - 1) {
-                await flip(array, maxIndex);
-                await flip(array, n - 1);
-            }
-            n--;
+
+    let n = o.size;
+    while (n > 1) {
+        o.states[n] = 2;
+        let maxIndex = findMax(array, n);
+        if (maxIndex !== n - 1) {
+            await flip(array, maxIndex);
+            await flip(array, n - 1);
         }
-        a.active = false;
-        return array;
+        n--;
     }
-    else {
-        alert("You cannot see multiple selections at once.\nFirst you need to restart..");
-    }
+    o.states = 0;
+
+    return array;
+
 }

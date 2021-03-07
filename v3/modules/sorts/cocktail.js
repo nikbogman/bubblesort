@@ -1,35 +1,33 @@
 import * as util from '../utils.js';
-import { a } from '../../main.js';
+import { o } from '../../main.js';
 
 export default async function (array) {
-    if (!a.active) {
-        a.active = true;
-        let swapped = true;
-        let start = 0;
-        let end = array.length - 1;
-        while (swapped) {
-            swapped = false;
-            for (let i = start; i < end; ++i) {
-                if (array[i] > array[i + 1]) {
-                    await util.swap(array, i, i + 1);
-                    swapped = true;
-                }
+    let swapped = true;
+    let start = 0;
+    let end = o.size - 1;
+    while (swapped) {
+        swapped = false;
+        for (let i = start; i < end; ++i) {
+            o.states[i] = 1;
+            if (array[i] > array[i + 1]) {
+                await util.swap(array, i, i + 1);
+                swapped = true;
             }
-            if (!swapped)
-                break;
-            swapped = false;
-            end -= 1;
-            for (let i = end - 1; i >= start; --i) {
-                if (array[i] > array[i + 1]) {
-                    await util.swap(array, i, i + 1);
-                    swapped = true;
-                }
-            }
-            start += 1;
+            o.states[i] = 0;
         }
-        a.active = false;
-        return array;
-    } else {
-        alert("You cannot see multiple selections at once.\nFirst you need to restart..");
+        if (!swapped)
+            break;
+        swapped = false;
+        end -= 1;
+        for (let i = end - 1; i >= start; --i) {
+            o.states[i] = 1;
+            if (array[i] > array[i + 1]) {
+                await util.swap(array, i, i + 1);
+                swapped = true;
+            }
+            o.states[i] = 0;
+        }
+        start += 1;
     }
+    return array;
 }
