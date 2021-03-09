@@ -18,7 +18,7 @@ export async function stop() {
 
 export async function swap(array, a, b, ms) {
     await sleep(ms);
-    let temp = array[a];
+    const temp = array[a];
     array[a] = array[b];
     array[b] = temp;
 }
@@ -27,8 +27,8 @@ export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let green = '#4ce600';
-let red = '#FF4500';
+const green = '#4ce600';
+const red = '#FF4500';
 
 export function rectangulars(height, shapeWidth) {
     for (let i = 0; i < o.size; i++) {
