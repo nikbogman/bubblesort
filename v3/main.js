@@ -12,8 +12,9 @@ const shapeWidth = 20;
 
 import * as util from './modules/utils.js';
 import buttons from './modules/buttons.js';
+
 function setup() {
-    var canvas = createCanvas(windowWidth, 720);
+    const canvas = createCanvas(windowWidth, 720);
     canvas.parent('canvasHTML');
     o.size = floor(width / shapeWidth);
     util.initArray();
