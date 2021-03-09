@@ -13,16 +13,20 @@ const activeError = "You cannot reset or activate another sort while one is runn
 const sortedError = "You cannot activate sort if the values are already sorted. Restart";
 
 async function check(sort) {
-    if (!f.active) {
-        if (!f.sorted) {
+    if (!f.active) 
+    {
+        if (!f.sorted) 
+        {
             f.active = true;
             f.sorted = true;
-            const temp = await sort(array.values);
+            let  temp = await sort(array.values);
             f.active = false;
             return temp;
-        } else
+        } 
+        else
             alert(sortedError);
-    } else
+    } 
+    else
         alert(activeError);
 }
 
@@ -47,34 +51,34 @@ export default function () {
 
     createButton("bubble")
         .class('button button1')
-        .mouseClicked(() => check(bubble, array.values))
+        .mouseClicked(() => check(bubble))
 
     createButton("selection")
         .class('button button1')
-        .mouseClicked(() => check(selection, array.values))
+        .mouseClicked(() => check(selection))
 
     createButton("insertation")
         .class('button button1')
-        .mouseClicked(() => check(insertation, array.values))
+        .mouseClicked(() => check(insertation))
 
     createButton("gnome")
         .class('button button1')
-        .mouseClicked(() => check(gnome, array.values))
+        .mouseClicked(() => check(gnome))
 
     createButton("shell")
         .class('button button1')
-        .mouseClicked(() => check(shell, array.values))
+        .mouseClicked(() => check(shell))
 
     createButton("cocktail")
         .class('button button1')
-        .mouseClicked(() => check(cocktail, array.values))
+        .mouseClicked(() => check(cocktail))
 
     createButton("pancake")
         .class('button button1')
-        .mouseClicked(() => check(pancake, array.values))
+        .mouseClicked(() => check(pancake))
 
     createButton("quick")
         .class('button button1')
-        .mouseClicked(() => quickSort(array.values, 0, array.size - 1));
+        .mouseClicked(() => quickSort(array.values, 0, array.size - 1))
 
 }

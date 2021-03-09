@@ -7,7 +7,7 @@ export function initArray() {
         array.values[i] = random(height);
         array.states[i] = 0;
     }
-    array.sorted$ = false;
+    f.sorted = false;
 }
 
 export async function stop() {
