@@ -17,7 +17,7 @@ async function check(sort) {
         if (!o.sorted$) {
             o.active$ = true;
             o.sorted$ = true;
-            let temp = await sort(o.values);
+            const temp = await sort(o.values);
             o.active$ = false;
             return temp;
         }
