@@ -12,7 +12,6 @@ import quick from './sorts/quick.js';
 const activeError = "You cannot reset or activate another sort while one is running. Wait...";
 const sortedError = "You cannot activate sort if the values are already sorted. Restart";
 
-<<<<<<< HEAD
 async function check(sort, args) {
     if (!f.active) {
         if (!f.sorted) {
@@ -20,15 +19,6 @@ async function check(sort, args) {
             f.sorted = true;
             const temp = await sort(args);
             f.active = false;
-=======
-async function check(sort) {
-    if (!o.active$) {
-        if (!o.sorted$) {
-            o.active$ = true;
-            o.sorted$ = true;
-            const temp = await sort(o.values);
-            o.active$ = false;
->>>>>>> 9fbff04a2b54a8ed63549d520dc6567218684429
             return temp;
         } else
             alert(sortedError);
