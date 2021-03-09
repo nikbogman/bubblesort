@@ -8,7 +8,6 @@ const shapeWidth = 20;
 window.setup = () => {
     const canvas = createCanvas(windowWidth, 720).parent('canvasHTML');
     array.size = floor(width / shapeWidth);
-
     util.initArray();
     buttons();
 }

@@ -7,17 +7,17 @@ import shell from './sorts/shell.js';
 import gnome from './sorts/gnome.js';
 import cocktail from './sorts/cocktail.js';
 import pancake from './sorts/pancake.js';
-import quick from './sorts/quick.js';
+import { quickSort} from './sorts/quick.js';
 
 const activeError = "You cannot reset or activate another sort while one is running. Wait...";
 const sortedError = "You cannot activate sort if the values are already sorted. Restart";
 
-async function check(sort, args) {
+async function check(sort) {
     if (!f.active) {
         if (!f.sorted) {
             f.active = true;
             f.sorted = true;
-            const temp = await sort(args);
+            const temp = await sort(array.values);
             f.active = false;
             return temp;
         } else
@@ -75,6 +75,6 @@ export default function () {
 
     createButton("quick")
         .class('button button1')
-        .mouseClicked(() => check(quick, array.values, 0, array.size - 1))
+        .mouseClicked(() => quickSort(array.values, 0, array.size - 1));
 
 }
