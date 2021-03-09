@@ -1,24 +1,24 @@
-import { o } from '../main.js';
+import { array,flags as f} from '../variables.js';
 
 export function initArray() {
-    o.values = new Array(o.size);
-    o.states = new Array(o.size);
-    for (let i = 0; i < o.size; i++) {
-        o.values[i] = random(height);
-        o.states[i] = 0;
+    array.values = new Array(array.size);
+    array.states = new Array(array.size);
+    for (let i = 0; i < array.size; i++) {
+        array.values[i] = random(height);
+        array.states[i] = 0;
     }
-    o.sorted$ = false;
+    array.sorted$ = false;
 }
 
 export async function stop() {
-    while (o.pause$) {
+    while (f.pause) {
         await sleep(0);
     }
 }
 
 export async function swap(array, a, b, ms) {
     await sleep(ms);
-    let temp = array[a];
+    const temp = array[a];
     array[a] = array[b];
     array[b] = temp;
 }
@@ -27,20 +27,20 @@ export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let green = '#4ce600';
-let red = '#FF4500';
+const green = '#4ce600';
+const red = '#FF4500';
 
 export function rectangulars(height, shapeWidth) {
-    for (let i = 0; i < o.size; i++) {
+    for (let i = 0; i < array.size; i++) {
         noStroke();
-        if (o.states[i] == 1) {
+        if (array.states[i] == 1) {
             fill(red);
-        } else if (o.states[i] == 2) {
+        } else if (array.states[i] == 2) {
             fill(green);
         } else {
             fill(255);
         }
-        rect(i * shapeWidth, height - o.values[i], shapeWidth, o.values[i]);
+        rect(i * shapeWidth, height - array.values[i], shapeWidth, array.values[i]);
     }
 }
 

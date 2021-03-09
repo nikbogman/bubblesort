@@ -1,7 +1,7 @@
 import * as util from '../utils.js';
-import { o } from '../../main.js';
+import { array } from '../../variables.js';
 
-let findMax = (arr, k) => {
+const findMax = (arr, k) => {
     let max = -Infinity;
     let maxIdx = 0;
     for (let i = 0; i < k; i++) {
@@ -13,7 +13,7 @@ let findMax = (arr, k) => {
     return maxIdx;
 }
 
-let flip = async (arr, k) => {
+const flip = async (arr, k) => {
     let i = 0;
     while (i < k) {
         await util.swap(arr, k, i);
@@ -23,20 +23,17 @@ let flip = async (arr, k) => {
     return arr;
 }
 
-export default async function (array) {
-
-    let n = o.size;
+export default async function (vals) {
+    let n = array.size;
     while (n > 1) {
-        o.states[n] = 2;
-        let maxIndex = findMax(array, n);
+        array.states[n] = 2;
+        let maxIndex = findMax(vals, n);
         if (maxIndex !== n - 1) {
-            await flip(array, maxIndex);
-            await flip(array, n - 1);
+            await flip(vals, maxIndex);
+            await flip(vals, n - 1);
         }
         n--;
     }
-    o.states = 0;
-
-    return array;
-
+    array.states = 0;
+    return vals;
 }

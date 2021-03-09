@@ -1,22 +1,19 @@
 import * as util from '../utils.js';
-import { o } from '../../main.js';
+import { array } from '../../variables.js';
 
-export default async function (array) {
-
-    let n = o.size;
+export default async function (vals) {
+    let n = array.size;
     for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
         for (let i = gap; i < n; i += 1) {
-            let temp = array[i];
+            let temp = vals[i];
             await util.stop();
             let j;
-            for (j = i; j >= gap && array[j - gap] > temp; j -= gap) {
-                array[j] = array[j - gap];
+            for (j = i; j >= gap && vals[j - gap] > temp; j -= gap) {
+                vals[j] = vals[j - gap];
             }
             await util.sleep(0);
-            array[j] = temp;
+            vals[j] = temp;
         }
     }
-
-    return array;
-
+    return vals;
 }

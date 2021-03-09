@@ -1,20 +1,20 @@
 import * as util from '../utils.js';
-import { o } from '../../main.js';
+import { array } from '../../variables.js';
 
-export default async function (array) {
+export default async function (vals) {
     let minIdx;
-    for (let i = 0; i < o.size - 1; i++) {
+    for (let i = 0; i < array.size - 1; i++) {
         minIdx = i;
-        o.states[i] = 1;
-        for (let j = i + 1; j < o.size; j++) {
+        array.states[i] = 1;
+        for (let j = i + 1; j < array.size; j++) {
             await util.stop();
-            if (array[j] < array[minIdx])
+            if (vals[j] < vals[minIdx])
                 minIdx = j;
-            o.states[j] = 0;
+            array.states[j] = 0;
         }
-        await util.swap(array, i, minIdx);
-        o.states[i] = 2;
+        await util.swap(vals, i, minIdx);
+        array.states[i] = 2;
     }
-    o.states = 0;
-    return array;
+    array.states = 0;
+    return vals;
 }
