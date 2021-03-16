@@ -1,0 +1,13 @@
+{
+  "name": "saw",
+  "version": "1.0.0",
+  "description": "website for visualization of simple sorting algorithms ",
+  "main": "draw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nicolaMAN",
+  "git repository":"",
+  "license": "UNLICENSED",
+  "type": "module"
+}

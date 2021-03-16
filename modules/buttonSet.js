@@ -1,5 +1,5 @@
-import { array, flags as f } from '../variables.js';
-import { initArray } from './utils.js';
+import { arrayStruct as a, flags as f } from '../variables.js';
+import { init } from './utilities.js';
 import bubble from './sorts/bubble.js';
 import selection from './sorts/selection.js';
 import insertation from './sorts/insertation.js';
@@ -7,27 +7,24 @@ import shell from './sorts/shell.js';
 import gnome from './sorts/gnome.js';
 import cocktail from './sorts/cocktail.js';
 import pancake from './sorts/pancake.js';
-import { quickSort} from './sorts/quick.js';
 
-const activeError = "You cannot reset or activate another sort while one is running. Wait...";
-const sortedError = "You cannot activate sort if the values are already sorted. Restart";
+const ACTIVE_ERROR = "You cannot reset or activate another sort while one is running. Wait...";
+const SORTED_ERROR = "You cannot activate sort if the values are already sorted. Restart";
 
-async function check(sort) {
-    if (!f.active) 
-    {
-        if (!f.sorted) 
-        {
+async function checkFlags(sort) {
+    if (!f.active) {
+        if (!f.sorted) {
             f.active = true;
             f.sorted = true;
-            let  temp = await sort(array.values);
+            let temp = await sort(a.values);
             f.active = false;
             return temp;
-        } 
+        }
         else
-            alert(sortedError);
-    } 
+            alert(SORTED_ERROR);
+    }
     else
-        alert(activeError);
+        alert(ACTIVE_ERROR);
 }
 
 export default function () {
@@ -44,41 +41,36 @@ export default function () {
         .class('button button1')
         .mouseClicked(() => {
             if (!f.active)
-                initArray();
+                init();
             else
-                alert(activeError);
+                alert(ACTIVE_ERROR);
         });
 
     createButton("bubble")
         .class('button button1')
-        .mouseClicked(() => check(bubble))
+        .mouseClicked(() => checkFlags(bubble))
 
     createButton("selection")
         .class('button button1')
-        .mouseClicked(() => check(selection))
+        .mouseClicked(() => checkFlags(selection))
 
     createButton("insertation")
         .class('button button1')
-        .mouseClicked(() => check(insertation))
+        .mouseClicked(() => checkFlags(insertation))
 
     createButton("gnome")
         .class('button button1')
-        .mouseClicked(() => check(gnome))
+        .mouseClicked(() => checkFlags(gnome))
 
     createButton("shell")
         .class('button button1')
-        .mouseClicked(() => check(shell))
+        .mouseClicked(() => checkFlags(shell))
 
     createButton("cocktail")
         .class('button button1')
-        .mouseClicked(() => check(cocktail))
+        .mouseClicked(() => checkFlags(cocktail))
 
     createButton("pancake")
         .class('button button1')
-        .mouseClicked(() => check(pancake))
-
-    createButton("quick")
-        .class('button button1')
-        .mouseClicked(() => quickSort(array.values, 0, array.size - 1))
-
+        .mouseClicked(() => checkFlags(pancake))
 }
