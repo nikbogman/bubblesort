@@ -26,7 +26,11 @@ async function checkFlags(sort) {
     else
         alert(ACTIVE_ERROR);
 }
-
+const button = (sort) => {
+    createButton(sort.name)
+        .class('button button1')
+        .mouseClicked(() => checkFlags(sort))
+}
 export default function () {
     createButton("pause")
         .class('button button1')
@@ -45,32 +49,11 @@ export default function () {
             else
                 alert(ACTIVE_ERROR);
         });
-
-    createButton("bubble")
-        .class('button button1')
-        .mouseClicked(() => checkFlags(bubble))
-
-    createButton("selection")
-        .class('button button1')
-        .mouseClicked(() => checkFlags(selection))
-
-    createButton("insertation")
-        .class('button button1')
-        .mouseClicked(() => checkFlags(insertation))
-
-    createButton("gnome")
-        .class('button button1')
-        .mouseClicked(() => checkFlags(gnome))
-
-    createButton("shell")
-        .class('button button1')
-        .mouseClicked(() => checkFlags(shell))
-
-    createButton("cocktail")
-        .class('button button1')
-        .mouseClicked(() => checkFlags(cocktail))
-
-    createButton("pancake")
-        .class('button button1')
-        .mouseClicked(() => checkFlags(pancake))
+    button(bubble);
+    button(cocktail);
+    button(gnome);
+    button(insertation);
+    button(pancake);
+    button(selection);
+    button(shell);
 }

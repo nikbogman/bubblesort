@@ -23,7 +23,7 @@ const flip = async (nums, k) => {
     return nums;
 }
 
-export default async function (numbers) {
+export default async function pancake(numbers) {
     let n = a.size;
     while (n > 1) {
         a.states[n] = 2;

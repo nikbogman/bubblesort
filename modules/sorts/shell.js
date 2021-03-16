@@ -1,7 +1,7 @@
 import * as util from '../utilities.js';
 import { arrayStruct as a } from '../../variables.js';
 
-export default async function (numbers) {
+export default async function shell(numbers) {
     let n = a.size;
     for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
         for (let i = gap; i < n; i += 1) {

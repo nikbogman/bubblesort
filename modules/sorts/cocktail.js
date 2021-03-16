@@ -1,7 +1,7 @@
 import * as util from '../utilities.js';
 import { arrayStruct as a} from '../../variables.js';
 
-export default async function (numbers) {
+export default async function cocktail(numbers) {
     let swapped = true;
     let start = 0;
     let end = a.size - 1;

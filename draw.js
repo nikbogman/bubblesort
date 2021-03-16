@@ -2,12 +2,13 @@ import { arrayStruct as a } from './variables.js';
 import { init } from './modules/utilities.js';
 import buttonSet from './modules/buttonSet.js';
 
-const shapeWidth = 20;                                                      //the width of the shape
+const shapeWidth = 50;                                                      //the width of the shape
 const ms = 0;                                                               //delay in miliseconds
 
 window.setup = () => {
-    const canvas = createCanvas(windowWidth, 720).parent('canvasHTML');
+    const canvas = createCanvas(windowWidth, windowHeight/1.5).parent('canvasHTML');
     a.size = floor(width / shapeWidth);
+    console.log(a.size);
     init();                                                                 //initializing the arrayStruct
     buttonSet();
 }

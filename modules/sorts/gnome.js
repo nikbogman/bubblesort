@@ -2,7 +2,7 @@ import * as util from '../utilities.js';
 import { arrayStruct as a} from '../../variables.js';
 
 
-export default async function (numbers) {
+export default async function gnome(numbers) {
     let n = a.size;
     let i = 0;
     while (i < n) {

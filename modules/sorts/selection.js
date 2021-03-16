@@ -1,7 +1,7 @@
 import * as util from '../utilities.js';
 import { arrayStruct as a} from '../../variables.js';
 
-export default async function (numbers) {
+export default async function selection(numbers) {
     let minIndex;
     for (let i = 0; i < a.size - 1; i++) {
         minIndex = i;

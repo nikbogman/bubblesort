@@ -1,7 +1,7 @@
 import * as util from '../utilities.js';
 import { arrayStruct as a} from '../../variables.js';
 
-export default async function (numbers) {
+export default async function bubble(numbers) {
     for (let i = 0; i < a.size; i++) {
         for (let j = 0; j < a.size - 1 - i; j++) {
             a.states[j] = 1;
