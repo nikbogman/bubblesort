@@ -4,8 +4,8 @@ import '../styles/menu.css';
 import '../styles/sorts.css';
 import '../styles/inputs.css';
 
-import { pause, play, shuffle, unfill, fill } from '../svgs/export_svgs';
-import * as sort from '../sorting-algorithms/export_all';
+import { pause, play, shuffle, unfill, fill } from '../svgs/_exportSvgs_';
+import * as sort from '../sorting-algorithms/_exportAll_';
 import { init } from './utilities';
 
 export let isArrayReset = false;
