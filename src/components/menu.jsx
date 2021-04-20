@@ -70,10 +70,10 @@ const Menu = (props) => {
 
     const SortButtons = () => {
         return <div className="sorts">
-            {sorts.map((sort, index) => {
+            {sorts.map((s, index) => {
                 return <button key={index} disabled={disableButtons} onClick={
-                    async (e) => handleClick(e, sort)
-                }>{sort.name}</button>;
+                    async (e) => handleClick(e, s)
+                }>{s.name}</button>;
             })
             }
         </div>;
