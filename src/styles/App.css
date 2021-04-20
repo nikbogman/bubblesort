@@ -1,0 +1,20 @@
+body {
+  background: linear-gradient(#DEB0DF, #A16BFE, #a2f7aad8);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: grid;
+  place-items: center;
+}
+
+.App {
+  margin-top: 125px;
+  text-align: center;
+  padding: 1px;
+  width: 1280px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+

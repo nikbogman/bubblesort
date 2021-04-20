@@ -1,0 +1,54 @@
+.sorts {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: rgb(214, 214, 214);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
+.sorts button {
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid rgb(214, 214, 214);
+    display: inline-block;
+    cursor: pointer;
+    color: #000000;
+    font-family: Courier New;
+    padding: 9px 16px;
+    text-decoration: none;
+    margin: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.sorts button:hover {
+    border-color: rgb(200, 200, 200);
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.0), 0 0px 0px 0 rgba(0, 0, 0, 0.0);
+}
+
+.sorts button:active {
+    position: relative;
+    top: 1px;
+}
+
+.sorts button:disabled {
+    color: rgb(214, 214, 214);
+}
+
+.sorts button:hover:disabled {
+    background-color: #ffffff;
+    color: rgb(214, 214, 214);
+}
+
+.more {
+    padding: 0px;
+    display: inline-flex;
+}
+
+.more h3 {
+    padding: 10px 100px 0px 0px;
+    font-weight: 300;
+}
