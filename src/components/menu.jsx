@@ -12,18 +12,6 @@ export let isArrayReset = false;
 export let isSortingPaused = false;
 
 const Menu = (props) => {
-
-    const sorts = [
-        sort.bubble,
-        sort.insertation,
-        sort.selection,
-        sort.gnome,
-        sort.pancake,
-        sort.cocktail,
-        sort.shell,
-        sort.quick,
-    ];
-
     const [disableButtons, setDisableButtons] = useState(false);
     const [stopIcon, setStopIcon] = useState(pause);
     const [strokeIcon, setStrokeIcon] = useState(unfill);
@@ -70,12 +58,14 @@ const Menu = (props) => {
 
     const SortButtons = () => {
         return <div className="sorts">
-            {sorts.map((algorithm, index) => {
-                return <button key={index} disabled={disableButtons} onClick={
-                    async (e) => handleClick(e, algorithm)
-                }>{algorithm.name}</button>;
-            })
-            }
+            <button onClick={(e)=>handleClick(e,sort.bubble)}>bubble</button>
+            <button onClick={(e)=>handleClick(e,sort.insertation)}>insertation</button>
+            <button onClick={(e)=>handleClick(e,sort.selection)}>selection</button>
+            <button onClick={(e)=>handleClick(e,sort.gnome)}>gnome</button>
+            <button onClick={(e)=>handleClick(e,sort.cocktail)}>cocktail</button>
+            <button onClick={(e)=>handleClick(e,sort.shell)}>shell</button>
+            <button onClick={(e)=>handleClick(e,sort.pancake)}>pancake</button>
+            <button onClick={(e)=>handleClick(e,sort.quick)}>quick</button>
         </div>;
     }
 
