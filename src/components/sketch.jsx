@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import p5 from 'p5';
 import { init } from './utilities';
 
+const GREEN = '#4ce600';
+const RED = '#FF4500';
+const WHITE = 255;
+const BLACK = 0;
+const {
+    REACT_APP_CANVAS_WIDTH,
+    REACT_APP_CANVAS_HEIGHT,
+} = process.env;
+
 class Canvas extends Component {
     constructor(props) {
         super(props);
-        this.myRef = React.createRef();
+        this.canvasRef = React.createRef();
     }
 
     Sketch = (p) => {
-        p.setup = () => {
-            p.createCanvas(this.props.canvas.width, this.props.canvas.height);
-        }
-        
-        const GREEN = '#4ce600';
-        const RED = '#FF4500';
-        const WHITE = 255;
-        const BLACK = 0;
-
+        p.setup = () => p.createCanvas(REACT_APP_CANVAS_WIDTH, REACT_APP_CANVAS_HEIGHT);
         p.draw = () => {
             p.background(WHITE);
             for (var i = 0; i < this.props.size; i++) {
@@ -29,36 +30,34 @@ class Canvas extends Component {
                 else
                     p.fill(BLACK);
                 p.rect(i * this.props.shapeWidth,
-                    this.props.canvas.height - this.props.array[i],
+                    REACT_APP_CANVAS_HEIGHT - this.props.array[i],
                     this.props.shapeWidth, this.props.array[i]
                 );
             }
         }
     }
 
-    componentDidMount() {
+    initialize(properties) {
         init(
-            this.props.array,
-            this.props.colors,
-            this.props.size,
-            this.props.canvas.height,
+            properties.array,
+            properties.colors,
+            properties.size
         );
-        this.myP5 = new p5(this.Sketch, this.myRef.current);
+        this.myP5 = new p5(this.Sketch, this.canvasRef.current);
     }
+
+    componentDidMount() {
+        return this.initialize(this.props);
+    }
+
     componentWillReceiveProps(newProps) {
-        if (newProps.shapeWidth !== this.props.shapeWidth ) {
+        if (newProps.shapeWidth !== this.props.shapeWidth) {
             this.myP5.remove();
-            init(
-                newProps.array,
-                newProps.colors,
-                newProps.size,
-                newProps.canvas.height,
-            );
-            this.myP5 = new p5(this.Sketch, this.myRef.current);
+            this.initialize(newProps);
         }
     }
     render() {
-        return <div ref={this.myRef} />
+        return <div ref={this.canvasRef} />
     }
 }
 

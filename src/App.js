@@ -3,89 +3,82 @@ import React, { Component } from 'react';
 import Canvas from './components/sketch';
 import Menu from './components/menu';
 
+const {
+  REACT_APP_CANVAS_WIDTH,
+  REACT_APP_CANVAS_HEIGHT,
+} = process.env;
+export const STEPS = [1280, 640, 320, 160, 128, 80, 64, 40, 32, 20, 16, 10, 8, 5, 4, 2, 1];
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.canvas = {
-      width: 1280,
-      height: 480
-    }
-    this.steps = [1280, 640, 320, 160, 128, 80, 64, 40, 32, 20, 16, 10, 8, 5, 4, 2, 1];
     this.state = {
-      stepIndex: 0,
+      step: 0,
       shapeWidth: 0,
-      arraySize: 0,
-      msDelay: 0,
+      size: 0,
+      delay: 0,
       stroke: false
     }
     this.array = [];
     this.colors = [];
   }
 
-  componentWillMount() {
-    this.setState({
-      stepIndex: 6,
-      shapeWidth: this.steps[6],
-      arraySize: this.canvas.width / this.steps[6]
-    })
-    this.array.length = this.canvas.width / this.steps[6];
-    this.colors = [...this.array].fill(0);
-  }
-
-
-  handleChange = (e) => {
-    const inputValue = parseInt(e.target.value);
-    new Promise(resolve => {
+  onChange = (index) => {
+    return new Promise(resolve => {
       this.setState({
-        stepIndex: inputValue,
-        shapeWidth: this.steps[inputValue],
-        arraySize: this.canvas.width / this.steps[inputValue]
+        step: index,
+        shapeWidth: STEPS[index],
+        size: REACT_APP_CANVAS_WIDTH / STEPS[index]
       }, resolve)
-      this.array.length = this.canvas.width / this.steps[inputValue];
+      this.array.length = REACT_APP_CANVAS_WIDTH / STEPS[index];
       this.colors = [...this.array].fill(0);
-    })
+    });
   }
 
-  handleDelayChange = (e) => {
+  componentWillMount() {
+    return this.onChange(6);
+  }
+
+  delayChange = (e, data) => {
     this.setState({
-      msDelay: parseInt(e.target.value)
-    });
-  }
+      delay: data
+    })
+  };
 
-  handleStrokeChange = (e) => {
-    this.setState((prevState, props) => {
-      return {
-        stroke: !prevState.stroke
-      }
-    });
-  }
+  strokeChange = (e) => this.setState((prevState, props) => {
+    return {
+      stroke: !prevState.stroke
+    }
+  });
 
+  handleChange = (e, data) => {
+    this.onChange(data);
+  }
   render() {
     return (
       <>
         <div className="App">
           <Canvas
-            canvas={this.canvas}
             array={this.array}
             colors={this.colors}
-            size={this.canvas.width}
             shapeWidth={this.state.shapeWidth}
             stroke={this.state.stroke}
+            size={this.state.size}
           />
 
           <Menu
-            maxStep={this.steps.length - 1}
-            stepIndex={this.state.stepIndex}
+            maxStep={STEPS.length - 1}
+            stepIndex={this.state.step}
+            size={this.state.size}
             array={this.array}
             colors={this.colors}
             shapeWidth={this.state.shapeWidth}
-            size={this.state.arraySize}
             stroke={this.state.stroke}
-            height={this.canvas.height}
-            ms={this.state.msDelay}
+            height={REACT_APP_CANVAS_HEIGHT}
+            ms={this.state.delay}
             handleChange={this.handleChange}
-            handleDelayChange={this.handleDelayChange}
-            handleStrokeChange={this.handleStrokeChange}
+            handleDelayChange={this.delayChange}
+            handleStrokeChange={this.strokeChange}
           />
         </div>
       </>

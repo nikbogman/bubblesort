@@ -1,8 +1,12 @@
 import { isSortingPaused } from './menu';
 
-export function init(array, colors, size, height) {
+const {
+    REACT_APP_CANVAS_HEIGHT
+} = process.env;
+
+export function init(array, colors, size) {
     for (let i = 0; i < size; i++) {
-        array[i] = Math.floor(Math.random() * (height - 100 + 1)) + 100;
+        array[i] = Math.floor(Math.random() * (REACT_APP_CANVAS_HEIGHT - 100 + 1)) + 100;
         colors[i] = 0;
     }
 }

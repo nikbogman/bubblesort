@@ -1,34 +1,35 @@
-.menu {
-    display: inline-flex;
+.menu{
+    display: flex;
+    position: relative;
 }
-
 .controls {
-    background-color: rgb(214, 214, 214);
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.controls button {
-    background-color: #ffffff;
-    border: 1px solid rgb(215, 215, 215);
-    border-radius: 5px;
-    display: inline-block;
-    cursor: pointer;
-    color: #000000;
-    font-family: Courier New;
-    text-decoration: none;
-    margin: 2px;
-    padding: 4px 8px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
-}
-
-.controls button:hover {
-    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
-}
-
-.controls p {
-    margin-left: auto;
     display: inline;
+    float: left;
+    padding: 5px;
+    width: 30%;
+}
+.controls .slider{
+    width: 90%;
+}
+.panel{
+    display: inline;
+    width: 70%;
+}
+.footer{
+    position: absolute;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    left: 30.5%;
+}
+.footer h1{
+    display: inline;
+}
+.footer h3{
+    display: inline;
+    padding: 0px 150px 0px 0px;
+}
+.sorts{
+    color: black;
+    padding: 5px;
 }
