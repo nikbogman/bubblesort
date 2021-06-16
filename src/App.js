@@ -7,20 +7,22 @@ const {
   REACT_APP_CANVAS_WIDTH,
   REACT_APP_CANVAS_HEIGHT,
 } = process.env;
-export const STEPS = [1280, 640, 320, 160, 128, 80, 64, 40, 32, 20, 16, 10, 8, 5, 4, 2, 1];
+export const STEPS = [1280, 640, 320, 160, 128, 80, 64, 40, 32, 20, 16, 10, 8, 5, 4, 2, 1]; // the number of elements named steps
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 0,
-      shapeWidth: 0,
-      size: 0,
-      delay: 0,
-      stroke: false
+      step: 0,       //ehe index in the steps
+      size: 0,       //array size
+
+      delay: 0,      //delay in ms
+
+      stroke: false, // stroke of the shapes
+      shapeWidth: 0  //the width of the shapes
     }
     this.array = [];
-    this.colors = [];
+    this.colors = [];// the coloration 
   }
 
   onChange = (index) => {
@@ -51,9 +53,6 @@ class App extends Component {
     }
   });
 
-  handleChange = (e, data) => {
-    this.onChange(data);
-  }
   render() {
     return (
       <>
@@ -61,24 +60,26 @@ class App extends Component {
           <Canvas
             array={this.array}
             colors={this.colors}
+            size={this.state.size}
             shapeWidth={this.state.shapeWidth}
             stroke={this.state.stroke}
-            size={this.state.size}
           />
 
           <Menu
-            maxStep={STEPS.length - 1}
-            stepIndex={this.state.step}
-            size={this.state.size}
             array={this.array}
             colors={this.colors}
+            size={this.state.size}
+            stepIndex={this.state.step}
             shapeWidth={this.state.shapeWidth}
             stroke={this.state.stroke}
-            height={REACT_APP_CANVAS_HEIGHT}
             ms={this.state.delay}
-            handleChange={this.handleChange}
-            handleDelayChange={this.delayChange}
-            handleStrokeChange={this.strokeChange}
+            handleChange={(e, data) => this.onChange(data)}
+            handleDelayChange={(e, data) => this.setState({ delay: data })}
+            handleStrokeChange={(e) => this.setState((prevState, props) => {
+              return {
+                stroke: !prevState.stroke
+              }
+            })}
           />
         </div>
       </>

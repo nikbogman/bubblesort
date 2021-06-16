@@ -3,6 +3,8 @@ import { Button, IconButton, Slider, Typography } from '@material-ui/core';
 import { pause, play, shuffle, unfill, fill } from '../svgs/_exportSvgs_';
 import * as sort from '../sorting-algorithms/_exportAll_';
 import { init } from './utilities';
+import { STEPS } from '../App';
+
 import '../styles/Menu.css';
 export let isArrayReset = false;
 export let isSortingPaused = false;
@@ -82,7 +84,7 @@ const Menu = (props) => {
                     className="slider"
                     disabled={disableButtons}
                     min={0}
-                    max={props.maxStep}
+                    max={STEPS.length - 1}
                     value={props.stepIndex}
                     onChange={props.handleChange}
                     marks
