@@ -9,3 +9,5 @@ Sorting algorithm visualizer aka SAV is my first React project. The tehnologies 
 ### `yarn start`
 or see on the link
 
+### live preview on "link"
+
