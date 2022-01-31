@@ -1,4 +1,4 @@
-import { isSortingPaused } from './menu';
+import { isSortingPaused } from './ControlPanel';
 
 const {
     REACT_APP_CANVAS_HEIGHT

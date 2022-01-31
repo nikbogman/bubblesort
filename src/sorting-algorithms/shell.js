@@ -1,8 +1,8 @@
-import { stop, sleep } from "../components/utilities";
-import { isArrayReset } from "../components/menu";
+import { stop, sleep } from "../layout/utilities";
+import { isArrayReset } from "../layout/ControlPanel";
 
 
-export default async function shell(values,colors, size, ms) {
+export default async function shell(values, colors, size, ms) {
     let n = size;
     for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
         for (let i = gap; i < n; i += 1) {
@@ -12,8 +12,7 @@ export default async function shell(values,colors, size, ms) {
             for (j = i; j >= gap && values[j - gap] > temp; j -= gap) {
                 values[j] = values[j - gap];
             }
-            if (isArrayReset)
-            {
+            if (isArrayReset) {
                 colors.fill(0);
                 return;
             }

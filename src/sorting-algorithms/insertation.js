@@ -1,15 +1,14 @@
-import { sleep, stop } from "../components/utilities";
-import { isArrayReset } from "../components/menu";
+import { sleep, stop } from "../layout/utilities";
+import { isArrayReset } from "../layout/ControlPanel";
 
 
 
-export default async function insertation(values,colors, size, ms) {
+export default async function insertation(values, colors, size, ms) {
     for (let i = 1; i < size; i++) {
         let current = values[i];
         colors[i] = 1;
         let j = i - 1;
-        if (isArrayReset)
-        {
+        if (isArrayReset) {
             colors.fill(0);
             return;
         }

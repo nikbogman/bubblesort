@@ -1,7 +1,7 @@
 import './styles/App.css';
 import React, { Component } from 'react';
-import Canvas from './components/sketch';
-import Menu from './components/menu';
+import Canvas from './layout/Canvas';
+import Menu from './layout/ControlPanel';
 
 const {
   REACT_APP_CANVAS_WIDTH,
@@ -86,6 +86,22 @@ class App extends Component {
     );
   }
 }
+
+
+const App2 = () => {
+
+  return (
+    <div className='App'>
+      <Canvas />
+      <Menu />
+    </div>
+  );
+}
+
+
+
+
+
 
 export default App;
 

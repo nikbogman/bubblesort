@@ -17,19 +17,19 @@ class Canvas extends Component {
         this.canvasRef = React.createRef();
     }
 
-    Sketch = (p) => {
-        p.setup = () => p.createCanvas(REACT_APP_CANVAS_WIDTH, REACT_APP_CANVAS_HEIGHT);
-        p.draw = () => {
-            p.background(WHITE);
+    Sketch = (p5) => {
+        p5.setup = () => p5.createCanvas(REACT_APP_CANVAS_WIDTH, REACT_APP_CANVAS_HEIGHT);
+        p5.draw = () => {
+            p5.clear();
             for (var i = 0; i < this.props.size; i++) {
-                this.props.stroke ? p.stroke(WHITE) : p.noStroke();
+                this.props.stroke ? p5.stroke(WHITE) : p5.noStroke();
                 if (this.props.colors[i] === 1)
-                    p.fill(RED);
+                    p5.fill(RED);
                 else if (this.props.colors[i] === 2)
-                    p.fill(GREEN);
+                    p5.fill(GREEN);
                 else
-                    p.fill(BLACK);
-                p.rect(i * this.props.shapeWidth,
+                    p5.fill(BLACK);
+                p5.rect(i * this.props.shapeWidth,
                     REACT_APP_CANVAS_HEIGHT - this.props.array[i],
                     this.props.shapeWidth, this.props.array[i]
                 );
@@ -43,17 +43,21 @@ class Canvas extends Component {
             properties.colors,
             properties.size
         );
-        this.myP5 = new p5(this.Sketch, this.canvasRef.current);
+
     }
 
     componentDidMount() {
-        return this.initialize(this.props);
+        this.initialize(this.props);
+        this.myP5 = new p5(this.Sketch, this.canvasRef.current);
+        return;
+
     }
 
     componentWillReceiveProps(newProps) {
         if (newProps.shapeWidth !== this.props.shapeWidth) {
             this.myP5.remove();
             this.initialize(newProps);
+            this.myP5 = new p5(this.Sketch, this.canvasRef.current);
         }
     }
     render() {

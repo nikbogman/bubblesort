@@ -1,8 +1,8 @@
-import { stop, swap } from "../components/utilities";
-import { isArrayReset } from "../components/menu";
+import { stop, swap } from "../layout/utilities";
+import { isArrayReset } from "../layout/ControlPanel";
 
 
-export default async function cocktail(values,colors, size, ms) {
+export default async function cocktail(values, colors, size, ms) {
     let swapped = true;
     let start = 0;
     let end = size - 1;
@@ -11,8 +11,7 @@ export default async function cocktail(values,colors, size, ms) {
         for (let i = start; i < end; ++i) {
             colors[i] = 1;
             if (values[i] > values[i + 1]) {
-                if (isArrayReset)
-                {
+                if (isArrayReset) {
                     colors.fill(0);
                     return;
                 }
@@ -30,8 +29,7 @@ export default async function cocktail(values,colors, size, ms) {
         for (let i = end - 1; i >= start; --i) {
             colors[i] = 1;
             if (values[i] > values[i + 1]) {
-                if (isArrayReset)
-                {
+                if (isArrayReset) {
                     colors.fill(0);
                     return;
                 }

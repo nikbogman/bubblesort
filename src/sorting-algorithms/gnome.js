@@ -1,8 +1,8 @@
-import { stop, swap } from "../components/utilities";
-import { isArrayReset } from "../components/menu";
+import { stop, swap } from "../layout/utilities";
+import { isArrayReset } from "../layout/ControlPanel";
 
 
-export default async function gnome(values,colors, size, ms) {
+export default async function gnome(values, colors, size, ms) {
     let n = size;
     let i = 0;
     while (i < n) {
@@ -18,12 +18,11 @@ export default async function gnome(values,colors, size, ms) {
             colors[i] = 2;
             i--;
         }
-        if (isArrayReset)
-        {
+        if (isArrayReset) {
             colors.fill(0);
             return;
         }
-        
+
     }
     colors.fill(2);
 

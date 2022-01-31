@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Button, IconButton, Slider, Typography } from '@material-ui/core';
-import { pause, play, shuffle, unfill, fill } from '../svgs/_exportSvgs_';
-import * as sort from '../sorting-algorithms/_exportAll_';
+import { Button, IconButton, Slider, Typography } from '@mui/material';
+import { pause, play, shuffle, unfill, fill } from '../svgs';
+import * as sort from '../sorting-algorithms/index.js';
 import { init } from './utilities';
 import { STEPS } from '../App';
 
-import '../styles/Menu.css';
+import '../styles/menu.css';
 export let isArrayReset = false;
 export let isSortingPaused = false;
 

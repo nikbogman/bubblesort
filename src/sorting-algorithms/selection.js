@@ -1,5 +1,5 @@
-import { stop, swap } from "../components/utilities";
-import { isArrayReset } from "../components/menu";
+import { stop, swap } from "../layout/utilities";
+import { isArrayReset } from "../layout/ControlPanel";
 
 
 export default async function selection(values, colors, size, ms) {
@@ -13,8 +13,7 @@ export default async function selection(values, colors, size, ms) {
                 minIndex = j;
             colors[j] = 0;
         }
-        if (isArrayReset)
-        {
+        if (isArrayReset) {
             colors.fill(0);
             return;
         }

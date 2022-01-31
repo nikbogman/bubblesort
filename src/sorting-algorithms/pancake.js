@@ -1,5 +1,5 @@
-import { stop, swap } from "../components/utilities";
-import { isArrayReset } from "../components/menu";
+import { stop, swap } from "../layout/utilities";
+import { isArrayReset } from "../layout/ControlPanel";
 
 
 const findMax = (nums, k) => {
@@ -25,11 +25,10 @@ const flip = async (nums, k, ms) => {
     return nums;
 }
 
-export default async function pancake(values,colors, size, ms) {
+export default async function pancake(values, colors, size, ms) {
     let n = size;
     while (n > 1) {
-        if (isArrayReset)
-        {
+        if (isArrayReset) {
             colors.fill(0);
             return;
         }

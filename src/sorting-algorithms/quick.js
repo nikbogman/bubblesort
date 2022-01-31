@@ -1,10 +1,9 @@
-import { swap,stop } from "../components/utilities";
-import { isArrayReset } from "../components/menu";
+import { swap, stop } from "../layout/utilities";
+import { isArrayReset } from "../layout/ControlPanel";
 
 export default async function quick(values, colors, size, ms) {
     await quickSort(values, 0, size - 1, ms, colors);
-    if(isArrayReset)
-    {
+    if (isArrayReset) {
         return;
     }
     colors.fill(2);

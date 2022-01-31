@@ -1,11 +1,10 @@
-import { stop, swap } from "../components/utilities";
-import { isArrayReset } from "../components/menu";
+import { stop, swap } from "../layout/utilities";
+import { isArrayReset } from "../layout/ControlPanel";
 
 export default async function bubble(values, colors, size, ms) {
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size - 1 - i; j++) {
-            if (isArrayReset)
-            {
+            if (isArrayReset) {
                 colors.fill(0);
                 return;
             }
