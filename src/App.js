@@ -1,7 +1,12 @@
 import './styles/App.css';
 import React, { Component } from 'react';
+<<<<<<< Updated upstream
 import Canvas from './layout/Canvas';
 import Menu from './layout/ControlPanel';
+=======
+import Canvas from './components/sketch';
+import Menu from './components/menu';
+>>>>>>> Stashed changes
 
 const {
   REACT_APP_CANVAS_WIDTH,
@@ -23,6 +28,7 @@ class App extends Component {
     }
     this.array = [];
     this.colors = [];// the coloration 
+<<<<<<< Updated upstream
   }
 
   onChange = (index) => {
@@ -97,7 +103,71 @@ const App2 = () => {
     </div>
   );
 }
+=======
+  }
 
+  onChange = (index) => {
+    return new Promise(resolve => {
+      this.setState({
+        step: index,
+        shapeWidth: STEPS[index],
+        size: REACT_APP_CANVAS_WIDTH / STEPS[index]
+      }, resolve)
+      this.array.length = REACT_APP_CANVAS_WIDTH / STEPS[index];
+      this.colors = [...this.array].fill(0);
+    });
+  }
+
+  componentWillMount() {
+    return this.onChange(6);
+  }
+>>>>>>> Stashed changes
+
+  delayChange = (e, data) => {
+    this.setState({
+      delay: data
+    })
+  };
+
+  strokeChange = (e) => this.setState((prevState, props) => {
+    return {
+      stroke: !prevState.stroke
+    }
+  });
+
+  render() {
+    return (
+      <>
+        <div className="App">
+          <Canvas
+            array={this.array}
+            colors={this.colors}
+            size={this.state.size}
+            shapeWidth={this.state.shapeWidth}
+            stroke={this.state.stroke}
+          />
+
+          <Menu
+            array={this.array}
+            colors={this.colors}
+            size={this.state.size}
+            stepIndex={this.state.step}
+            shapeWidth={this.state.shapeWidth}
+            stroke={this.state.stroke}
+            ms={this.state.delay}
+            handleChange={(e, data) => this.onChange(data)}
+            handleDelayChange={(e, data) => this.setState({ delay: data })}
+            handleStrokeChange={(e) => this.setState((prevState, props) => {
+              return {
+                stroke: !prevState.stroke
+              }
+            })}
+          />
+        </div>
+      </>
+    );
+  }
+}
 
 
 

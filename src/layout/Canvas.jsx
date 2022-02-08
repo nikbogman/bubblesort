@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import p5 from 'p5';
+<<<<<<< Updated upstream
 import { init } from './utilities';
 
 const GREEN = '#4ce600';
@@ -10,6 +11,11 @@ const {
     REACT_APP_CANVAS_WIDTH,
     REACT_APP_CANVAS_HEIGHT,
 } = process.env;
+=======
+import constants from '../shared/constants';
+import global from '../shared/common';
+import { AppContext } from '../contexts/AppContext';
+>>>>>>> Stashed changes
 
 class Canvas extends Component {
     constructor(props) {
