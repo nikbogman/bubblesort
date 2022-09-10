@@ -1,12 +1,15 @@
 import store from "../../stores";
 
 export default () => {
-    const { isRunning, switchIsRunning } = store(state => ({
+    const { isRunning, pause, play, sort } = store(state => ({
         isRunning: state.isRunning,
-        switchIsRunning: state.switchIsRunning
+        play: state.play,
+        pause: state.pause,
+
+        sort: state.sort
     }));
 
-    return <button onClick={switchIsRunning}>
+    return <button onClick={() => sort.loop ? pause() : play()}>
         {isRunning ? "pause" : "play"}
     </button>
 }
