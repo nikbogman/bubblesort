@@ -1,12 +1,12 @@
 import create from "zustand";
 import controllsSlice from "./controlls";
+import renderingSlice from "./rendreing";
+import sortingSlice from "./sorting";
 
 const store = create((set, get) => ({
     ...controllsSlice(set, get),
-    frame: 0,
-    triggerFrame: () => set(state => ({ frame: state.frame + 1 })),
-    sort: () => { },
-    setSort: (callback) => set({ sort: callback })
+    ...renderingSlice(set, get),
+    ...sortingSlice(set, get)
 }))
 
 export default store;

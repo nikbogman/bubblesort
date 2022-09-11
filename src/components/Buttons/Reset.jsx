@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import store from "../../stores";
-import { array } from "../../lib/Array";
+import store from "../../../stores";
+import { array } from "../../../lib/Array";
 
 export default () => {
     const { triggerFrame, isRunning } = store(state => ({

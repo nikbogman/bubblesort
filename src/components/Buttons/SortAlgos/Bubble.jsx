@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import store from "../stores";
-import useInterval from "../utilities/useInterval";
 import { BubbleSort } from "../lib/algorithms";
 
 export default () => {
@@ -11,7 +10,7 @@ export default () => {
     }));
 
 
-    return <button onClick={() => {
+    return <button disabled={isRunning} onClick={() => {
         setSort(new BubbleSort(10))
         play()
     }}>bubbleSort</button>

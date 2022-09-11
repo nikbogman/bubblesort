@@ -1,10 +1,10 @@
 import React from "react";
-import Rectangle from "../components/canvas/Rectangle";
-import { array } from "../lib/Array";
 import "./Canvas.css";
-import store from "../stores";
+
+import { array } from "../lib/Array";
+import Rectangle from "../components/canvas/Rectangle";
 import useInterval from "../utilities/useInterval";
-import { BubbleSort } from "../lib/algorithms";
+import store from "../stores";
 
 export default () => {
     const { _, triggerFrame, pause, sort, isRunning } = store(state => ({

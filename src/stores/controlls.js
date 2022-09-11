@@ -1,4 +1,4 @@
-export default (set, get) => ({
+export default (set, _) => ({
     isRunning: false,
     play: () => set({ isRunning: true }),
     pause: () => set({ isRunning: false }),
