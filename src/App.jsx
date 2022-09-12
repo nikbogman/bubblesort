@@ -3,10 +3,10 @@ import './App.css';
 
 import Canvas from './layouts/Canvas';
 import Controlls from './layouts/Controlls';
-import Sorting from './layouts/Sorting';
+import SortAlgos from './layouts/SortAlgos';
 
 export default () => (<div className='App'>
 	<Canvas />
 	<Controlls />
-	<Sorting />
+	<SortAlgos />
 </div>)

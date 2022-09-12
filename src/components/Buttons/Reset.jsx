@@ -1,19 +1,21 @@
 import { useEffect } from "react";
-import store from "../../../stores";
-import { array } from "../../../lib/Array";
+import store from "../../stores";
+import { array } from "../../lib/Array";
 
 export default () => {
-    const { triggerFrame, isRunning } = store(state => ({
+    const { triggerFrame, isRunning, lenght } = store(state => ({
         triggerFrame: state.triggerFrame,
-        isRunning: state.isRunning
+        isRunning: state.isRunning,
+        lenght: state.lenght
     }))
 
-    function resetArray() {
+    function resetArray(lenght) {
+        console.log(lenght)
         if (isRunning) return;
-        array.reconstruct(10)
+        array.reconstruct(lenght)
         triggerFrame()
     }
 
-    useEffect(() => resetArray(), [])
-    return <button onClick={() => resetArray()}>reset</button>
+    useEffect(() => resetArray(lenght), [lenght])
+    return <button onClick={() => resetArray(lenght)}>reset</button>
 }

@@ -1,4 +1,4 @@
-import BubbleSort from "../algorithms/BubbleSort";
+import BubbleSort from "../../components/Buttons/SortAlgos/Bubble";
 
 export default () => (<div>
     <BubbleSort />

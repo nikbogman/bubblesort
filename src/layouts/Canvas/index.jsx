@@ -1,23 +1,24 @@
 import React from "react";
-import "./Canvas.css";
+import "./style.css";
 
-import { array } from "../lib/Array";
-import Rectangle from "../components/canvas/Rectangle";
-import useInterval from "../utilities/useInterval";
-import store from "../stores";
+import { array } from "../../lib/Array";
+import Rectangle from "../../components/Rectangle";
+import useInterval from "../../hooks/useInterval";
+import store from "../../stores";
 
 export default () => {
-    const { _, triggerFrame, pause, sort, isRunning } = store(state => ({
+    const { _, triggerFrame, pause, sort, isRunning, delay } = store(state => ({
         _: state.frame,
         triggerFrame: state.triggerFrame,
         sort: state.sort,
         isRunning: state.isRunning,
-        pause: state.pause
+        pause: state.pause,
+        delay: state.delay
     }))
 
     useInterval(() => {
         if (sort.loop) sort.loop(pause, triggerFrame);
-    }, isRunning ? 100 : null)
+    }, isRunning ? delay : null)
 
     return (
         <div className="Canvas">

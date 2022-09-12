@@ -1,3 +1,4 @@
+import { useState } from "react";
 import store from "../../stores";
 
 export default () => {
@@ -9,7 +10,13 @@ export default () => {
         sort: state.sort
     }));
 
-    return <button onClick={() => sort.loop ? pause() : play()}>
+    function handleClick() {
+        if (sort.loop && isRunning) return pause();
+        else if (sort.loop && !isRunning) return play();
+        else return;
+    }
+
+    return <button onClick={handleClick}>
         {isRunning ? "pause" : "play"}
     </button>
 }

@@ -1,4 +1,4 @@
 export default (set, _) => ({
-    sort: () => { },
-    setSort: (callback) => set({ sort: callback })
+    sort: undefined,
+    setSort: (algorithm) => set({ sort: algorithm })
 })
