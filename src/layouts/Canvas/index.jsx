@@ -7,14 +7,13 @@ import useInterval from "../../hooks/useInterval";
 import store from "../../stores";
 
 export default () => {
-    const { _, triggerFrame, pause, sort, isRunning, delay } = store(state => ({
-        _: state.frame,
-        triggerFrame: state.triggerFrame,
-        sort: state.sort,
-        isRunning: state.isRunning,
-        pause: state.pause,
-        delay: state.delay
-    }))
+    const [triggerFrame, pause, sort, isRunning, delay] = store(state => [
+        state.triggerFrame,
+        state.pause,
+        state.sort,
+        state.isRunning,
+        state.delay
+    ])
 
     useInterval(() => {
         if (sort.loop) sort.loop(pause, triggerFrame);

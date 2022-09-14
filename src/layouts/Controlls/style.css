@@ -1,0 +1,28 @@
+.Controlls {
+    background-color: brown;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
+}
+
+.Buttons1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+    justify-content: center;
+    align-content: center;
+}
+
+.sliders {
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: green;
+}
+
+.Buttons2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: greenyellow;
+}

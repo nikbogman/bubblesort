@@ -3,17 +3,17 @@ import store from "../../stores";
 import { array } from "../../lib/Array";
 
 export default () => {
-    const { triggerFrame, isRunning, lenght } = store(state => ({
-        triggerFrame: state.triggerFrame,
-        isRunning: state.isRunning,
-        lenght: state.lenght
-    }))
+    const [triggerFrame, isRunning, lenght] = store(state => [
+        state.triggerFrame,
+        state.isRunning,
+        state.lenght
+    ])
 
     function resetArray(lenght) {
-        console.log(lenght)
+        console.log(lenght);
         if (isRunning) return;
-        array.reconstruct(lenght)
-        triggerFrame()
+        array.reconstruct(lenght);
+        triggerFrame();
     }
 
     useEffect(() => resetArray(lenght), [lenght])

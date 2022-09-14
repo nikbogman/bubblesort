@@ -1,5 +1,5 @@
 import BubbleSort from "../../components/Buttons/SortAlgos/Bubble";
-
-export default () => (<div>
+import "./style.css"
+export default () => (<div className="SortAlgos">
     <BubbleSort />
 </div>)

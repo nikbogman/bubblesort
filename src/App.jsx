@@ -6,7 +6,7 @@ import Controlls from './layouts/Controlls';
 import SortAlgos from './layouts/SortAlgos';
 
 export default () => (<div className='App'>
-	<Canvas />
 	<Controlls />
 	<SortAlgos />
+	<Canvas />
 </div>)
