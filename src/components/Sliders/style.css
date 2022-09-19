@@ -1,3 +1,5 @@
-.slider label {
-    width: 50;
+.slider {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }

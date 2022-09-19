@@ -8,20 +8,24 @@ export default class BubbleSort {
     }
 
     loop(pause, reframe) {
-        let { i } = this;
+        let i = this.i;
         if (this.n == 1) return pause();
         if (i < this.n - 1) {
-            let arr = [...array.values];
+            const arr = [...array.values];
+            array.colors[i] = "red";
             if (arr[i] > arr[i + 1]) {
-                var temp = arr[i];
+                const temp = arr[i];
                 arr[i] = arr[i + 1];
                 arr[i + 1] = temp;
+                array.colors[i] = "black";
+                array.colors[i + 1] = "red";
                 array.values = [...arr];
-                reframe()
             }
-            this.i += 1
-            return;
+            array.colors[i - 1] = "black";
+            this.i += 1;
+            return reframe();
         }
+
         this.n -= 1;
         this.i = 0;
         return;

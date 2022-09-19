@@ -1,4 +1,5 @@
 import store from "../../stores";
+import "./style.css";
 
 export default () => {
     const [isRunning, pause, play, sort] = store(state => [

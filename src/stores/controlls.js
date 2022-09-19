@@ -8,5 +8,11 @@ export default (set, _) => ({
     setDelay: (delay) => set({ delay }),
 
     lenght: 10,
-    setLenght: (lenght) => set({ lenght })
+    setLenght: (lenght) => set({ lenght }),
+
+    numberate: false,
+    setNumerate: (numerate) => set({ numerate }),
+
+    outline: false,
+    setOutline: (outline) => set({ outline }),
 })

@@ -1,5 +1,4 @@
 .Controlls {
-    background-color: brown;
     display: grid;
     grid-template-columns: repeat(3, 1fr)
 }
@@ -8,21 +7,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: cadetblue;
     justify-content: center;
     align-content: center;
 }
 
 .sliders {
-    display: inline-flex;
+    display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: green;
 }
 
 .Buttons2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: greenyellow;
+}
+
+@media only screen and (max-width: 600px) {
+    .Controlls {
+        display: block;
+    }
 }

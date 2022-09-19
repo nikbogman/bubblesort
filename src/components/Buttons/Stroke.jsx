@@ -2,16 +2,16 @@ import store from "../../stores";
 import "./style.css";
 
 export default () => {
-    const [numerate, setNumerate] = store(state => [
-        state.numerate,
-        state.setNumerate
+    const [outline, setOutline] = store(state => [
+        state.outline,
+        state.setOutline
     ]);
 
     function handleClick() {
-        return setNumerate(!numerate)
+        return setOutline(!outline)
     }
 
     return <button onClick={handleClick}>
-        {numerate ? "hide" : "show"}
+        {outline ? "stroke" : "nostroke"}
     </button>
 }

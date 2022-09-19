@@ -21,7 +21,7 @@ export default () => {
 
     return (
         <div className="Canvas">
-            {array.values.map(i => (<Rectangle value={i} />))}
+            {array.values.map((v, i) => (<Rectangle value={array.values[i]} color={array.colors[i]} />))}
         </div>
     )
 }
