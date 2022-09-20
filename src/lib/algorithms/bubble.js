@@ -1,6 +1,12 @@
 import { array } from "../Array";
 
-// implement Sort if ts
+function swap(list, index1, index2) {
+    const temp = list[index1];
+    list[index1] = list[index2];
+    list[index2] = temp;
+    return list;
+}
+
 export default class BubbleSort {
     constructor(n) {
         this.i = 0;
@@ -8,36 +14,33 @@ export default class BubbleSort {
     }
 
     async loop(pause, reframe) {
-        let i = this.i;
+        const current = this.i;
+        const next = this.i + 1;
+        let { values, colors } = array;
+
         if (this.n == 1) {
-            array.colors[i] = "greenyellow";
-            return pause()
-        };
-        if (i < this.n - 1) {
-            const arr = [...array.values];
+            colors[current] = "greenyellow";
+            return pause();
+        }
 
-            array.colors[i] = "red";
-            //array.colors[i + 1] = "yellow";
+        if (current < this.n - 1) {
 
-            if (arr[i] > arr[i + 1]) {
-                const temp = arr[i];
-                arr[i] = arr[i + 1];
-                arr[i + 1] = temp;
+            // color the current rectangle with red
+            colors[current] = "red";
 
-                //array.colors[i] = "yellow";
-                array.colors[i + 1] = "red";
-
-                array.values = [...arr];
+            if (values[current] > values[next]) {
+                values = [...swap(values, current, next)];
+                colors = [...swap(colors, next, current)];
             }
 
-            array.colors[i - 1] = "black";
             await reframe();
-            array.colors[i] = "black"
-
+            // color current back to black
+            colors[current] = "black";
             this.i += 1;
             return;
         }
-        array.colors[i] = "greenyellow"
+
+        colors[current] = "greenyellow";
 
         this.n -= 1;
         this.i = 0;
