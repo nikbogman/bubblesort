@@ -29,8 +29,10 @@ export default class BubbleSort {
             colors[current] = "red";
 
             if (values[current] > values[next]) {
+
                 values = [...swap(values, current, next)];
                 colors = [...swap(colors, next, current)];
+                //await reframe()
             }
 
             await reframe();
