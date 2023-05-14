@@ -1,12 +1,11 @@
-import React from 'react';
-import './App.css';
+import React from "react";
 
-import Canvas from './layouts/Canvas';
-import Controlls from './layouts/Controlls';
-import SortAlgos from './layouts/SortAlgos';
+import GridCanvas from "./components/GridCanvas";
+import ControlPanel from "./components/Controls/ControlPanel";
 
-export default () => (<div className='App'>
-	<Controlls />
-	<SortAlgos />
-	<Canvas />
-</div>)
+const App = () => <div className="App">
+	<GridCanvas />
+	<ControlPanel />
+</div >;
+
+export default App;
