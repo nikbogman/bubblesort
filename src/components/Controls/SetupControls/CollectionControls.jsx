@@ -1,6 +1,6 @@
 import React from "react";
-import useStore from "src/hooks/useStore";
-import { collection } from "src/lib/collection";
+import useStore from "hooks/useStore";
+import { collection } from "lib/collection";
 import { ImShuffle } from "react-icons/im";
 
 const CollectionControls = () => {
@@ -36,6 +36,7 @@ const CollectionControls = () => {
             />
         </div>
         <button
+            disabled={isRunning}
             className="bordered"
             onClick={handleChange}><span style={{
                 marginRight: '10px'

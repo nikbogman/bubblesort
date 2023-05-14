@@ -1,7 +1,7 @@
 import React from "react";
-import useStore from "src/hooks/useStore";
+import useStore from "hooks/useStore";
 import { FaPlay, FaPause } from "react-icons/fa";
-import Sort from "src/lib/sorts/Sort";
+import Sort from "lib/sorts/Sort";
 
 const StartStopButton = () => {
     const [isRunning, stop, start, sort] = useStore(state => [

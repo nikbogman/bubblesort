@@ -16,6 +16,9 @@ export default defineConfig({
   resolve: {
     alias: {
       src: "/src",
+      components: "/src/components",
+      lib: "/src/lib",
+      hooks: "/src/hooks",
     },
   },
 })

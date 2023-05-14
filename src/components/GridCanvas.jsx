@@ -1,9 +1,9 @@
 import React from "react";
-import useInterval from "src/hooks/useInterval";
-import useStore from "src/hooks/useStore";
+import useInterval from "hooks/useInterval";
+import useStore from "hooks/useStore";
 import "src/index.css";
-import { collection } from "src/lib/collection";
-import Sort from "src/lib/sorts/Sort";
+import { collection } from "lib/collection";
+import Sort from "lib/sorts/Sort";
 import GridCanvasColumn from "./GridCanvasColumn";
 
 const GridCanvas = () => {

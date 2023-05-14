@@ -1,5 +1,5 @@
-import useStore from "src/hooks/useStore";
-import BubbleSort from "src/lib/sorts/BubbleSort";
+import useStore from "hooks/useStore";
+import BubbleSort from "lib/sorts/BubbleSort";
 import { GiBubbles } from "react-icons/gi";
 
 const SortControl = () => {

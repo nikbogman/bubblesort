@@ -1,18 +1,20 @@
 import React from "react";
 
-import GridCanvas from "./components/GridCanvas";
-import ControlPanel from "./components/Controls/ControlPanel";
+import GridCanvas from "components/GridCanvas";
+import ControlPanel from "components/Controls/ControlPanel";
 import { BsGithub } from "react-icons/bs";
-import { RiArrowRightSLine } from "react-icons/ri";
+import { RiArrowRightLine } from "react-icons/ri";
 
-const App = () => <div className="App">
-	<GridCanvas />
-	<ControlPanel />
-	<footer>
-		<a href="https://github.com/one-moonman/sort-visualizator">
-			Source code here <RiArrowRightSLine /><BsGithub className="github-redirect" />
-		</a>
-	</footer>
-</div >;
+const App = () => {
+	return <div className="App">
+		<GridCanvas />
+		<ControlPanel />
+		<footer>
+			<a href="https://github.com/one-moonman/sort-visualizator">
+				Source code here<RiArrowRightLine style={{ marginLeft: '0.5em' }} /><BsGithub className="github-redirect" />
+			</a>
+		</footer>
+	</div >
+};
 
 export default App;
