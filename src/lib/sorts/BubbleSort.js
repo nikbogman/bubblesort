@@ -1,4 +1,4 @@
-import useStore from "../../hooks/useStore";
+import useStore from "src/hooks/useStore";
 import { collection } from "../collection";
 import Sort from "./Sort";
 
@@ -11,7 +11,7 @@ class BubbleSort extends Sort {
     async loop() {
         const { values, colors } = collection;
         if (this.unsortedCount === 0) {
-            colors[this.idx] = "greenyellow";
+            colors[this.idx] = "limegreen";
             // get stop from runtime controls
             return stop();
         }
@@ -29,7 +29,7 @@ class BubbleSort extends Sort {
             return;
         }
         // color those that are sorted
-        colors[this.idx] = "greenyellow";
+        colors[this.idx] = "limegreen";
         this.unsortedCount -= 1;
         this.idx = 0;
         return;

@@ -1,6 +1,7 @@
 import React from "react";
-import useStore from "../../../hooks/useStore";
-import { collection } from "../../../lib/collection";
+import useStore from "src/hooks/useStore";
+import { collection } from "src/lib/collection";
+import { ImShuffle } from "react-icons/im";
 
 const CollectionControls = () => {
     const [isRunning, reframe] = useStore(state => [
@@ -34,7 +35,11 @@ const CollectionControls = () => {
                 onChange={e => collectionLength.setState(e.target.value)}
             />
         </div>
-        <button onClick={handleChange}>Shuffle</button >
+        <button
+            className="bordered"
+            onClick={handleChange}><span style={{
+                marginRight: '10px'
+            }}><ImShuffle /></span>Shuffle</button >
     </>
 }
 

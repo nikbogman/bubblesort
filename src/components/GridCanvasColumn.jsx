@@ -6,7 +6,7 @@ const GridCanvasColumn = (props) => {
             height: props.value * 5,
             backgroundColor: props.bgColor
         }}
-        className="GridCanvasColumn">
+        className="grid-canvas__column">
     </div >
 }
 

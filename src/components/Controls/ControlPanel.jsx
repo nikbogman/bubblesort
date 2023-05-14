@@ -5,15 +5,16 @@ import StartStopButton from "./RuntimeControls/StartStopButton";
 import SortControl from "./SetupControls/SortControl";
 
 const ConrolPanel = () => <div className="control-panel">
-    <div className="runtime-controls">
+    <StartStopButton />
+    <div className="control">
         <DelaySlider />
-        <StartStopButton />
     </div>
-    <div className="setup-controls">
+    <div className="control">
         <CollectionControls />
+    </div>
+    <div className="control">
         <SortControl />
     </div>
-
 </div>;
 
 export default ConrolPanel;

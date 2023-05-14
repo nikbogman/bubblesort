@@ -13,4 +13,9 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly',
     },
   },
+  resolve: {
+    alias: {
+      src: "/src",
+    },
+  },
 })

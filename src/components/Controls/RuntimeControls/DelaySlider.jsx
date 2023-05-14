@@ -1,5 +1,5 @@
 import React from "react";
-import useStore from "../../../hooks/useStore";
+import useStore from "src/hooks/useStore";
 
 const DelaySlider = () => {
     const delay = useStore(state => ({

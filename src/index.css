@@ -54,15 +54,71 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.slider {}
+.slider {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem 0 2rem;
+}
 
 .grid-canvas {
   display: grid;
   height: 500px;
 }
 
-.setup-controls {}
+.grid-canvas__column {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom: 1px solid transparent;
+}
 
-.runtime-controls {}
+.control {
+  width: 28%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s;
+}
 
-.control-panel {}
+.control:hover {
+  border-color: #646cff;
+}
+
+.control-panel {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.start-stop-btn {
+  width: 6rem;
+  height: 6rem;
+  aspect-ratio: 1/1;
+}
+
+.bordered {
+  border: 1px solid white;
+}
+
+footer {
+  margin: 4rem 0 2rem 0;
+}
+
+footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.github-redirect {
+  margin-left: 1rem;
+  width: 4rem;
+  height: 4rem;
+}

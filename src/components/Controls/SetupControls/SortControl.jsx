@@ -1,5 +1,6 @@
-import useStore from "../../../hooks/useStore";
-import BubbleSort from "../../../lib/sorts/BubbleSort";
+import useStore from "src/hooks/useStore";
+import BubbleSort from "src/lib/sorts/BubbleSort";
+import { GiBubbles } from "react-icons/gi";
 
 const SortControl = () => {
     const [collectionLength, setSort, isRunning, start] = useStore(state => [
@@ -10,11 +11,17 @@ const SortControl = () => {
     ])
 
     return <>
-        <button disabled={isRunning} onClick={() => {
-            const bubble = new BubbleSort(collectionLength);
-            setSort(bubble);
-            start();
-        }}>Bubble</button>
+        <button
+            className="bordered"
+            disabled={isRunning}
+            onClick={() => {
+                const bubble = new BubbleSort(collectionLength);
+                setSort(bubble);
+                start();
+            }}>
+            <span style={{
+                marginRight: '10px'
+            }}><GiBubbles /></span>Bubble</button>
     </>
 }
 

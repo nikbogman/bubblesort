@@ -1,17 +1,17 @@
 import React from "react";
-import useInterval from "../hooks/useInterval";
-import useStore from "../hooks/useStore";
-import "../index.css";
-import { collection } from "../lib/collection";
-import Sort from "../lib/sorts/Sort";
+import useInterval from "src/hooks/useInterval";
+import useStore from "src/hooks/useStore";
+import "src/index.css";
+import { collection } from "src/lib/collection";
+import Sort from "src/lib/sorts/Sort";
 import GridCanvasColumn from "./GridCanvasColumn";
 
 const GridCanvas = () => {
 	/*
-	 it is not used anywhere but needs to 
-	 be passed in component in order to react to reframes
+	  it is not used anywhere but needs to 
+	  be passed in component in order to react to reframes
 	*/
-	const _ = useStore(state => state.frame);
+	const frame = useStore(state => state.frame);
 
 	const [collectionLength, delay, isRunning, sort] = useStore((state) => [
 		state.collectionLength,
@@ -21,7 +21,7 @@ const GridCanvas = () => {
 	]);
 
 	useInterval(
-		() => sort instanceof Sort ?? sort.loop(),
+		() => sort instanceof Sort && sort.loop(),
 		isRunning ? delay : null
 	);
 
