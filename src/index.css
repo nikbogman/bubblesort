@@ -54,8 +54,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* */
-.GridCanvas {
+.slider {}
+
+.grid-canvas {
   display: grid;
   height: 500px;
 }
+
+.setup-controls {}
+
+.runtime-controls {}
+
+.control-panel {}

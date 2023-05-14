@@ -1,5 +1,9 @@
+import useStore from "../../hooks/useStore";
 import { collection } from "../collection";
 import Sort from "./Sort";
+
+const reframe = () => useStore.getState().reframe();
+const stop = () => useStore.getState().stop();
 
 class BubbleSort extends Sort {
     constructor(length) { super(length); }
@@ -9,7 +13,7 @@ class BubbleSort extends Sort {
         if (this.unsortedCount === 0) {
             colors[this.idx] = "greenyellow";
             // get stop from runtime controls
-            return pause();
+            return stop();
         }
         if (this.idx < this.unsortedCount) {
             // color current
@@ -19,7 +23,7 @@ class BubbleSort extends Sort {
             }
             await reframe();
 
-            colors[this.idx] = "black";
+            colors[this.idx] = "white";
             // revert color of current back to default for the next execution
             this.idx += 1;
             return;

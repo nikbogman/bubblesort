@@ -2,7 +2,7 @@ import React from "react";
 import useStore from "../../../hooks/useStore";
 import { collection } from "../../../lib/collection";
 
-const SetupControls = () => {
+const CollectionControls = () => {
     const [isRunning, reframe] = useStore(state => [
         state.isRunning,
         state.reframe,
@@ -21,8 +21,8 @@ const SetupControls = () => {
 
     React.useEffect(handleChange, [collectionLength.state])
 
-    return <div className="CollectionControls">
-        <div className="collectionLengthSlider">
+    return <>
+        <div className="slider">
             <label>Collection lenght: </label>
             <input
                 disabled={isRunning}
@@ -34,10 +34,8 @@ const SetupControls = () => {
                 onChange={e => collectionLength.setState(e.target.value)}
             />
         </div>
-        <button
-            className="CollectionShuffleButton"
-            onClick={handleChange}>Shuffle</button>
-    </div>
+        <button onClick={handleChange}>Shuffle</button >
+    </>
 }
 
-export default SetupControls;
+export default CollectionControls;
