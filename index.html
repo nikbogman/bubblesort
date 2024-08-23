@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sorting algorithms visualizer</title>
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox='0 0 100 100'>
+		      <text y='1em' font-size='80'>
+				🫧
+		      </text>
+		    </svg>">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="index.css">
+		<title>bubblesort</title>
+	</head>
+	<body>
+		<canvas></canvas>
+		<div class="controls">
+			<button id="play-btn" class="">Play</button>
+			<button id="shuffle-btn" class="">Shuffle</button>
+			<div class="length-slider">
+				<label for="length-slider-input" data-label="Length"></label>
+				<input
+					id="length-slider-input"
+					type="range"
+					min="10"
+					max="100"
+					step="10"
+				/>
+			</div>
+			<div class="timeout-slider">
+				<label for="timeout-slider-input" data-label="Timeout"></label>
+				<input
+					id="timeout-slider-input"
+					type="range"
+					min="0"
+					max="1000"
+					step="100"
+				/>
+			</div>
+		</div>
+		<script src="index.js"></script>
+	</body>
 </html>
