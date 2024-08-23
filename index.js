@@ -33,6 +33,8 @@ function setup(length) {
     }
 
     n = length;
+
+    console.log(array);
 }
 
 window.onload = () => {
@@ -62,7 +64,6 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const width = canvas.width / array.length;
 
-    console.log(isSorting)
     for (let i = 0; i < array.length; i++) {
         if (i >= n) {
             // Color bars that are sorted
@@ -92,6 +93,8 @@ function bubbleSort() {
 
         clearInterval(intervalId);
         intervalId = null;
+
+        console.log(array);
 
         return draw(); // Sorting is complete
     }
